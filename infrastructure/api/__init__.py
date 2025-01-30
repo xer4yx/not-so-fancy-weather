@@ -1,5 +1,6 @@
-from .openweather_api import call_api
+from .di import get_weather_api
 
 __all__ = [
-    "call_api"
+    "get_weather_api",
 ]
+
