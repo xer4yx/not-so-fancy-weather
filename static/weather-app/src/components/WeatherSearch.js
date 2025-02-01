@@ -38,31 +38,14 @@ const WeatherSearch = ({ onSearch }) => {
       <form onSubmit={handleSubmit}>
         <div className="search-type">
           <label>
-            <input
-              type="radio"
-              value="coordinates"
-              checked={searchType === 'coordinates'}
+            <select
+              value={searchType}
               onChange={(e) => setSearchType(e.target.value)}
-            />
-            Coordinates
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="city"
-              checked={searchType === 'city'}
-              onChange={(e) => setSearchType(e.target.value)}
-            />
-            City Name
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="zip"
-              checked={searchType === 'zip'}
-              onChange={(e) => setSearchType(e.target.value)}
-            />
-            Zip Code
+            >
+              <option value="coordinates">Coordinates</option>
+              <option value="city">City Name</option>
+              <option value="zip">Zip Code</option>
+            </select>
           </label>
         </div>
 

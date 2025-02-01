@@ -1,0 +1,28 @@
+.weather-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between weather box and map */
+  height: 100vh; /* Adjust height to account for header */
+  width: 100vw; /* Ensure it takes full width of the page */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
+  overflow: auto; /* Allow scrolling if content overflows */
+}
+
+.weather-box {
+  background-color: #282c34;
+  min-height: 100%; /* Ensure it takes full height of the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  font-size: calc(5px + 2vmin);
+  margin: 0; /* Remove margin to avoid extra space */
+  color: white;
+  width: 40%; /* Adjust width as needed */
+}
+
+.map-container {
+  width: 50%; /* Adjust width as needed */
+  height: 100%; /* Ensure it takes full height of the container */
+}
