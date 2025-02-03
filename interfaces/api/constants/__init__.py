@@ -1,0 +1,1 @@
+from .endpoints import USER_COMMON_ENDPOINT
