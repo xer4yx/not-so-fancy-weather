@@ -14,7 +14,7 @@ version_toml = ["pyproject.toml:tool.poetry.version"]
 branch = "main"
 upload_to_pypi = false
 upload_to_release = true
-build_command = "python -m pip install --upgrade build && python -m build"
+post_release_command = "cat version.py"
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
@@ -27,8 +27,7 @@ prerelease_token = "rc"
 prerelease = true
 
 [tool.semantic_release.changelog]
-changelog_file = ""
-exclude_commit_patterns = []
+exclude_commit_patterns = ["^build:", "^chore:", "^ci:", "^docs:", "^style:", "^refactor:", "^perf:", "^test:"]
 mode = "init"
 insertion_flag = "<!-- version list -->"
 template_dir = "templates"
@@ -58,7 +57,7 @@ default = "semantic-release <semantic-release>"
 
 [tool.semantic_release.commit_parser_options]
 minor_tags = ["feat"]
-patch_tags = ["fix", "perf", "chore"]
+patch_tags = ["fix", "perf"]
 other_allowed_tags = ["build", "chore", "ci", "docs", "style", "refactor", "test"]
 allowed_tags = ["feat", "fix", "perf", "build", "chore", "ci", "docs", "style", "refactor", "test"]
 default_bump_level = 0
