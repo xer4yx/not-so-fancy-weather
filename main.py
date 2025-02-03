@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from version import __version__
 
-from interfaces.api import weather_router
+from interfaces.api.router import user_router, weather_router
 from utils.configs import NSFWSetting
 
 basic_settings = NSFWSetting()
@@ -27,6 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(weather_router, prefix="/api")
+app.include_router(user_router, prefix="/api")
 
 
 @app.get(path="/")
