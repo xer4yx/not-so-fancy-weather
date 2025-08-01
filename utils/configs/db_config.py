@@ -1,12 +1,15 @@
 from pydantic_settings import BaseSettings
-from pydantic import MongoDsn, ConfigDict
+from pydantic import ConfigDict
 
 
 class NSFWDbSettings(BaseSettings):
     model_config = ConfigDict(
-        env_file="db.env",
+        env_prefix="DB_",
+        env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore"
     )
-    MONGO_DSN: MongoDsn
+    MONGO_DSN: str
+    MONGO_USERNAME: str
+    MONGO_PASSWORD: str
