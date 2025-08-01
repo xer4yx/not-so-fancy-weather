@@ -3,6 +3,7 @@ import requests
 from requests.exceptions import RequestException
 
 from core.interface import ApiInterface
+from infrastructure.logger import get_logger
 from utils.configs import NSFWApiSettings
 
 api_settings = NSFWApiSettings()
@@ -13,6 +14,7 @@ class OpenWeatherApi(ApiInterface):
     """OpenWeatherMap API"""
     def __init__(self):
         self.settings = NSFWApiSettings()
+        self.logger = get_logger("infrastructure.api.openweather", "logs/infrastructure.log")
     
     def call(
         self, 
@@ -43,6 +45,15 @@ class OpenWeatherApi(ApiInterface):
         )
         
         if response.status_code != 200:
+            self.logger.error(
+                "API request failed",
+                extra={
+                    "url": response.url,
+                    "headers": response.headers,
+                    "status_code": response.status_code,
+                    "body": response.text,
+                }
+            )
             raise RequestException(f"API request failed with status code: {response.status_code}")
         
         return response.json()
